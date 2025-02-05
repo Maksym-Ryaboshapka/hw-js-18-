@@ -1,0 +1,29 @@
+{
+  "name": "hw-js-18",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel src/index.html --no-cache",
+    "build": "parcel build src/index.html --public-url ./ --no-cache",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "server": "json-server db.json --host 0.0.0.0 --port 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maksym-Ryaboshapka/hw-js-18.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Maksym-Ryaboshapka/hw-js-18/issues"
+  },
+  "homepage": "https://github.com/Maksym-Ryaboshapka/hw-js-18#readme",
+  "description": "",
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "json-server": "^1.0.0-beta.3",
+    "parcel": "^2.13.3"
+  }
+}

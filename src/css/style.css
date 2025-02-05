@@ -1,0 +1,57 @@
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.add-modal,
+.edit-modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 400px;
+  height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #eeeeee;
+  box-shadow: 5px 5px 8px 0px rgba(0,0,0,0.7);
+  transition: opacity 250ms ease-in;
+}
+
+.add-form,
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies {
+  display: flex;
+  gap: 70px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  list-style: none;
+}
+
+.movies__item {
+  width: 300px;
+  border: 2px solid #000;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

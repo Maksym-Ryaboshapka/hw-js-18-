@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <button id="add-movie">Add movie</button>
+    <ul class="movies"></ul>
+
+    <div class="add-modal is-hidden">
+      <form class="add-form">
+        <input type="text" placeholder="title" id="title" required />
+        <input type="text" placeholder="genre" id="genre" required />
+        <input type="text" placeholder="director" id="director" required />
+        <input type="text" placeholder="year" id="year" required />
+        <button class="add-form__btn" type="submit">Add</button>
+      </form>
+    </div>
+
+    <div class="edit-modal is-hidden">
+      <form class="edit-form">
+        <input type="text" placeholder="title" id="title" />
+        <input type="text" placeholder="genre" id="genre" />
+        <input type="text" placeholder="director" id="director" />
+        <input type="text" placeholder="year" id="year" />
+        <button class="edit-form__btn" type="submit">Edit</button>
+      </form>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
