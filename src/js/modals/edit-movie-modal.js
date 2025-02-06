@@ -13,7 +13,7 @@ function editingMovie(e) {
 
     const editForm = document.querySelector(".edit-form");
 
-    editForm.addEventListener("submit", (e) => {
+    editForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       const target = e.target.children;
@@ -24,35 +24,34 @@ function editingMovie(e) {
       const year = target.year.value;
 
       if (title && genre && director && year) {
-        putMovie(id, title, genre, director, year).then((data) => {
-          location.reload();
-        });
+        await putMovie(id, title, genre, director, year);
+
+        location.reload();
       } else {
-        getMovies().then((data) => {
-          let currMovie;
+        const moviesFromDB = await getMovies();
+        let currMovie;
 
-          data.forEach((el) => {
-            if (el.id === id) {
-              currMovie = el;
+        moviesFromDB.forEach(async (el) => {
+          if (el.id === id) {
+            currMovie = el;
 
-              const updatedMovie = {
-                title: title || currMovie.title,
-                genre: genre || currMovie.genre,
-                director: director || currMovie.director,
-                year: year || currMovie.year,
-              };
+            const updatedMovie = {
+              title: title || currMovie.title,
+              genre: genre || currMovie.genre,
+              director: director || currMovie.director,
+              year: year || currMovie.year,
+            };
 
-              putMovie(
-                id,
-                updatedMovie.title,
-                updatedMovie.genre,
-                updatedMovie.director,
-                updatedMovie.year
-              ).then(() => {
-                location.reload()
-              });
-            }
-          });
+            await putMovie(
+              id,
+              updatedMovie.title,
+              updatedMovie.genre,
+              updatedMovie.director,
+              updatedMovie.year
+            );
+
+            location.reload();
+          }
         });
       }
     });

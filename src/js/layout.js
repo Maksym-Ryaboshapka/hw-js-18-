@@ -1,7 +1,6 @@
 import { getMovies } from "./services/get-movies";
 import { addMovie } from "./services/add-movie";
 import { addMovieModal } from "./modals/add-movie-modal";
-import { deleteMovie } from "./services/delete-movie";
 
 class Page {
   constructor() {
@@ -43,19 +42,19 @@ class Page {
     item.append(title, genre, director, year, editBtn, deleteBtn);
   }
 
-  renderMovies() {
-    getMovies().then((data) => {
-      data.forEach((movie) => {
-        this.createMarkup(movie);
-      });
+  async renderMovies() {
+    const moviesFromDB = await getMovies();
+
+    moviesFromDB.forEach((movie) => {
+      this.createMarkup(movie);
     });
   }
 
-  renderAddedMovie(title, genre, director, year) {
-    addMovie(title, genre, director, year).then((data) => {
-      addMovieModal.toggle();
-      this.createMarkup(data);
-    });
+  async renderAddedMovie(title, genre, director, year) {
+    const currMovie = await addMovie(title, genre, director, year);
+    
+    addMovieModal.toggle();
+    this.createMarkup(currMovie);
   }
 }
 
